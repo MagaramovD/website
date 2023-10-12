@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>news</title>
+    <link rel = "stylesheet"  href="style.css">
+</head>
+<script src="java.js"></script>
+<body class="background-image">
+    <div class="container">
+        <h1 class="gym"><a classs = "main" href="Page.html">Gym sports.com</a></h1>
+        <h2 style="margin: 0;">
+            <ul class="horizontal-list">
+                <li><a href="exercises.html">EXERCISES</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contacts.html">CONTACTS</a></li>
+                <li><a href="news.html">NEWS</a></li>
+            </ul>
+        </h2>
+        <div id="newsContainer"></div>
+        <script>
+            class NewsArticle {
+                constructor(title, content, author, date) {
+                    this.title = title;
+                    this.content = content;
+                    this.author = author;
+                    this.date = date;
+                    
+                }
+            }
+    
+            class NewsFeed {
+                constructor() {
+                    this.articles = [];
+                }
+    
+                addArticle(article) {
+                    this.articles.push(article);
+                }
+    
+                displayArticles() {
+                    this.articles.forEach((article) => {
+                        console.log(article.title);
+                        console.log(article.content);
+                        console.log(`By ${article.author} on ${article.date}`);
+                    });
+                }
+            }
+    
+            const article1 = new NewsArticle("Czech bodybuilder Vladimir Zizka won the IFBB amateur show 'Diamond Cup Prague 2023'", "The fifth annual international amateur bodybuilding competition IFBB Diamond Cup Prague 2023 took place in Prague at the Rokytka sports center from September 29 to 30. 142 athletes from 18 countries took part in them. The winner of the amateur competition in men's bodybuilding was Vladimir Zizka. He won gold in the over 100 kg category and also won the title of absolute champion. After the amateur tournaments, the professional event “IFBB Elite Pro Prague” was organized, where athletes competing in the “Classic Physique” and “Fitness-Bikini” categories competed for the title of champion. The total prize fund was $8,000.", "Din Magaramov", "2023-10-10");
+            const article2 = new NewsArticle("Brett Wilkin withdraws from 2023 Mr. Olympia", " Another participant in the open bodybuilding tournament decided to skip the Mr. Olympia competition, which will be held in early November this year. Brett Wilkin reported digestive problems. In 2022, Brett showed his potential to the world when he made his Arnold Classic debut, finishing sixth. It took him a few months to increase his size, and the bodybuilder took the stage at the 2022 Romania Muscle Fest Pro, finishing second behind Behrouz Thabani, and then took home gold at the Big Man Weekend Pro, which qualified him for the 2023 Olympia. Health problems appear to be preventing him from competing in the most important bodybuilding competition of his career. Brett emphasized that the main reasons for his refusal were due to gastrointestinal problems. According to the athlete, he felt sick and dizzy. That's probably the hardest thing I could say. I've spent the last year preparing for this big moment and achieving a big goal. As you know, Ive been working towards this for the last 8-9 years, and now everything has collapsed, Wilkin explained. Over the past 5-6 weeks, his body has not responded properly to preparation for the competition, although there were warning signs before that too. This left Brett unable to eat, vomiting, and feeling dizzy. Accordingly, there was no progress from training. Brett explained that a turning point came when he had to discuss the issue with his coach and the decision was made to temporarily stop training. Wilkin hasnt trained for about two weeks. An athlete typically requires a lot of calories to maintain muscle size and density because he has a high metabolic rate. Over the past two weeks, he has lost about 7 kilograms. I tried to replace the foods that made me throw up, and it became a vicious cycle of nutritional deficiencies. My weight has come down, Ive lost 15-17 pounds in the last two weeks. I didnt think I could survive the next five weeks, not just physically but mentally. The stress and anxiety led to a depression that I needed to get out of, Brett said. According to him, his problems with the gastrointestinal tract are not chronic, and the bodybuilder intends to return to the competition stage as soon as they are resolved.Wilkin is not the only competitor to withdraw from the 2023 Mr. Olympia competition this year. On September 23, 2023, former two-time champion Big Ramy announced that he would sit out the upcoming show, stating that his body needed a break.", "Din Magaramov", "2023-09-12");
+    
+            const newsFeed = new NewsFeed();
+            newsFeed.addArticle(article1);
+            newsFeed.addArticle(article2);
+    
+            const newsContainer = document.getElementById("newsContainer");
+            const images = ["img/Chezh.jpg", "img/brett.jpg"];
+
+newsFeed.articles.forEach((article, index) => {
+    const articleElement = document.createElement("div");
+    articleElement.innerHTML = `
+        <h2>${article.title}</h2>
+        <img src="${images[index]}" alt="Описание изображения">
+        <p>${article.content}</p>
+        <p class="author-text" style="font-size: 15px;">By ${article.author} on ${article.date}</p>
+
+    `;
+    newsContainer.appendChild(articleElement);
+});
+        </script>
+
+    </div>
+    
+</body>
+</html>
